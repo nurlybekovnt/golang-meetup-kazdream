@@ -8,3 +8,8 @@ go test -bench . -benchmem -memprofile mem.out
 ```bash
 go tool pprof mem.out
 ```
+
+### See escape analysis results
+```bash
+go build -gcflags "-m -m"
+```
