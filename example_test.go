@@ -1,6 +1,7 @@
 package golangmeetupkazdream
 
 import (
+	"bytes"
 	"testing"
 )
 
@@ -16,5 +17,13 @@ func BenchmarkQueue(b *testing.B) {
 func BenchmarkConversionCustomer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		CustomerEncodedLen()
+	}
+}
+
+func BenchmarkWritingKeyValues(b *testing.B) {
+	buf := &bytes.Buffer{}
+	for i := 0; i < b.N; i++ {
+		buf.Reset()
+		WriteKeyValues(buf)
 	}
 }

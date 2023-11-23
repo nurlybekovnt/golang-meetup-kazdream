@@ -1,6 +1,7 @@
 package golangmeetupkazdream
 
 import (
+	"bytes"
 	"encoding/binary"
 	"sort"
 )
@@ -51,4 +52,26 @@ type BytesInterface interface {
 
 func BytesLen(b BytesInterface) int {
 	return len(b.Bytes())
+}
+
+func WriteKeyValues(w *bytes.Buffer) {
+	var temp []byte
+
+	temp = append(temp, "key1"...)
+	temp = append(temp, ':')
+	temp = append(temp, "val1"...)
+
+	temp = append(temp, '$')
+
+	temp = append(temp, "key2"...)
+	temp = append(temp, ':')
+	temp = append(temp, "val2"...)
+
+	temp = append(temp, '$')
+
+	temp = append(temp, "key3"...)
+	temp = append(temp, ':')
+	temp = append(temp, "val3"...)
+
+	w.Write(temp)
 }
